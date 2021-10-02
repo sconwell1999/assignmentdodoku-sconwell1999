@@ -15,7 +15,7 @@ def _create(parms):
                        -9,-5,-3,0,0,-7,0,-4,0,0,0,0,0,-5,-8,0,0,-1,0,0,-9,0,0,0
                        ,-2,-1,0,0,0,0,0,0,0,0,0,-9,-8,0,-6,-1,-6,-1,0,0,0,0,0,-7,0]
     r = random.randint(0,56)
-    result['integrity'] = getHash(result.grid)[r,r+8]
+    result['integrity'] = getHash(result['grid'])[r,r+8]
         
     return result
 
