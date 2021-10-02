@@ -75,5 +75,5 @@ class CreateTest(TestCase):
     def test_Create_070_BelowBoundLevel(self):
         parms = {'op':'create','level':'0'}
         result = create._create(parms)
-        self.assertEqual(result['status'],'error:')
+        self.assertIn('error:',result['status'])
         
