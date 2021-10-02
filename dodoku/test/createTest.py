@@ -38,8 +38,22 @@ class CreateTest(TestCase):
         self.assertIn(result.get('integrity'), hashValue)
         self.assertEqual(result.get('status'), statusValue)
         
-    def test_Create_Integrityis8Digits(self):
+    def test_Create_040_Integrityis8Digits(self):
         parms = {'op':'create','level':'1'}
         result = create._create(parms)
         self.assertEqual(len(result['integrity']),8)
+        
+    def test_Create_050_MaxLevelValue(self):
+        gridValue= 0,0,0,0,-6,0,0,0,0,0,0,0,-4,0,-9,0,0,0,0,0,-9,-7,0,-5,-1,0,0,0,-5,-2,0,
+                    -7,0,-8,-9,0,-9,0,0,-5,0,-2,0,0,-4,0,-8,-3,0,-4,0,-7,-2,0,0,0,-1,-2,0,-8,0,0,0,0,
+                    -3,0,0,0,0,0,0,0,-6,0,-4,0,0,0,-8,0,-7,0,0,0,0,0,0,0,-5,0,0,0,0,-1,0,-6,-3,0,0,0,
+                    -9,-8,0,-5,0,-1,-2,0,-2,0,0,-7,0,-1,0,0,-3,0,-4,-3,0,-8,0,-6,-5,0,0,0,-7,-3,0,-5,
+                    -9,0,0,0,0,0,-4,0,-2,0,0,0,0,0,0,0,-6,0,0,0,0] 
+        hashValue = 'eb572835ffe2015c731057f94d46fa77430ad6fd332abb0d7dd39d5f2ccadea9'
+        statusValue = 'ok'
+        parms = {'op':'create', 'level':'3'}
+        result = create._create(parms)
+        self.assertEqual(result.get('grid'), gridValue)
+        self.assertIn(result.get('integrity'), hashValue)
+        self.assertEqual(result.get('status'), statusValue)
         
