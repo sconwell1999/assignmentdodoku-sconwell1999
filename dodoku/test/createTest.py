@@ -77,3 +77,13 @@ class CreateTest(TestCase):
         result = create._create(parms)
         self.assertIn('error:',result['status'])
         
+    def test_Create_080_UppercaseLevel(self):
+        gridValue= [0,0,0,0,-6,0,0,0,0,0,0,0,-4,0,-9,0,0,0,0,0,-9,-7,0,-5,-1,0,0,0,-5,-2,0,
+                    -7,0,-8,-9,0,-9,0,0,-5,0,-2,0,0,-4,0,-8,-3,0,-4,0,-7,-2,0,0,0,-1,-2,0,-8,0,0,0,0,
+                    -3,0,0,0,0,0,0,0,-6,0,-4,0,0,0,-8,0,-7,0,0,0,0,0,0,0,-5,0,0,0,0,-1,0,-6,-3,0,0,0,
+                    -9,-8,0,-5,0,-1,-2,0,-2,0,0,-7,0,-1,0,0,-3,0,-4,-3,0,-8,0,-6,-5,0,0,0,-7,-3,0,-5,
+                    -9,0,0,0,0,0,-4,0,-2,0,0,0,0,0,0,0,-6,0,0,0,0]
+        parms = {'op':'create','Level':'3'}
+        result = create._create(parms)
+        self.assertEqual(result.get('grid'), gridValue)
+        
