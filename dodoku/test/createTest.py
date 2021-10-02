@@ -17,7 +17,7 @@ class CreateTest(TestCase):
         statusValue = 'ok'
         parms = {'op':'create', 'level':'2'}
         result = create._create(parms)
-        self.assertEqual(result.grid, gridValue)
-        self.assertIn(result.integrity, hashValue)
-        self.assertEqual(result.status, statusValue)
+        self.assertEqual(result.get('grid'), gridValue)
+        self.assertIn(result.get('integrity'), hashValue)
+        self.assertEqual(result.get('status'), statusValue)
         
