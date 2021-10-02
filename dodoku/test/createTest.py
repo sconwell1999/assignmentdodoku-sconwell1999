@@ -57,3 +57,17 @@ class CreateTest(TestCase):
         self.assertIn(result.get('integrity'), hashValue)
         self.assertEqual(result.get('status'), statusValue)
         
+    def test_Create_060_MissingLevelValue(self):
+        gridValue= [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,
+                          -1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,
+                          -2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,
+                          0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,
+                          -6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,
+                          -5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
+        hashValue = '5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd'
+        statusValue = 'ok'
+        parms = {'op':'create'}
+        result = create._create(parms)
+        self.assertEqual(result.get('grid'), gridValue)
+        self.assertIn(result.get('integrity'), hashValue)
+        self.assertEqual(result.get('status'), statusValue)
