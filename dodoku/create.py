@@ -1,3 +1,3 @@
 def _create(parms):
-    result = {'status': 'create stub'}
+    result = {'grid':'', 'integrity':'', 'status':''}
     return result
