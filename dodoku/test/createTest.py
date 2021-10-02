@@ -38,3 +38,8 @@ class CreateTest(TestCase):
         self.assertIn(result.get('integrity'), hashValue)
         self.assertEqual(result.get('status'), statusValue)
         
+    def test_Create_Integrityis8Digits(self):
+        parms = {'op':'create','level':'1'}
+        result = create._create(parms)
+        self.assertEqual(len(result['integrity'],8))
+        
