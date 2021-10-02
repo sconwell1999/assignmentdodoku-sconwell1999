@@ -71,3 +71,9 @@ class CreateTest(TestCase):
         self.assertEqual(result.get('grid'), gridValue)
         self.assertIn(result.get('integrity'), hashValue)
         self.assertEqual(result.get('status'), statusValue)
+        
+    def test_Create_070_BelowBoundLevel(self):
+        parms = {'op':'create','level':'0'}
+        result = create._create(parms)
+        self.assertEqual(result['status'],'error:')
+        
