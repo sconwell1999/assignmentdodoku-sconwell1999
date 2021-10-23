@@ -66,7 +66,7 @@ class CreateTest(TestCase):
                           -5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
         hashValue = '5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd'
         statusValue = 'ok'
-        parms = {'op':'create'}
+        parms = {'op':'create','level':''}
         result = create._create(parms)
         self.assertEqual(result.get('grid'), gridValue)
         self.assertIn(result.get('integrity'), hashValue)
