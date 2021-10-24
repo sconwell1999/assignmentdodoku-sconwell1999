@@ -4,14 +4,13 @@ import random
 import ast
 
 def _insert(parms):
-    result = {}
+    result['grid'] = ast.literal_eval(parms['grid'])
     if not parms['integrity'] in getHash(parms['grid']):
         result = {'status': 'error: Integrity mismatch'}
         return result
     pattern = r"R(.*?)C(\d+)"
     row = int(re.search(pattern, parms['cell'], re.IGNORECASE).group(1))
     column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
-    result['grid'] = ast.literal_eval(parms['grid'])
     #insert value
     if row < 7 and column < 10:
         result['grid'][(row-1)*9 + (column - 1)] = int(parms['value'])
