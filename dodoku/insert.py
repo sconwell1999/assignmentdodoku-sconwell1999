@@ -20,6 +20,7 @@ def _insert(parms):
         result['grid'][99 + (row-10)*9 + (column - 7)] = int(parms['value'])
     else:
         result = {'status':'error: Invalid cell'}   
+        return result
     r = random.randint(0,56)
     result['integrity'] = getHash(result['grid'])[r:r+8]
     result['status'] = 'ok'
