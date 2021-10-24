@@ -1,5 +1,5 @@
 import re
-import dodoku.getHash as getHash
+from dodoku.getHash import getHash
 import random
 
 def _insert(parms):
