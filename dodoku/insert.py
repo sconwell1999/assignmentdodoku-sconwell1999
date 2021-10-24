@@ -61,5 +61,5 @@ def getSubGridValues(grid, row, column):
     values = []
     if row in range(1,7):
         for x in range(0,3):
-            values.append(grid.
+            return
     
