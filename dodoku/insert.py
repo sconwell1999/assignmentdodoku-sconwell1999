@@ -4,6 +4,9 @@ import random
 
 def _insert(parms):
     result = {}
+    if not parms['integrity'] in getHash(parms['grid']):
+        result = {'status': 'error: Integrity mismatch'}
+        return result
     pattern = r"R(.*?)C(\d+)"
     row = int(re.search(pattern, parms['cell'], re.IGNORECASE).group(1))
     column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
