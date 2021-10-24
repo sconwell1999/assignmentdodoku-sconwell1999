@@ -5,8 +5,8 @@ import random
 def _insert(parms):
     result = {}
     pattern = r"R(.*?)C(\d+)"
-    row = int(re.search(pattern, pattern['cell'], re.IGNORECASE).group(1))
-    column= int(re.search(pattern, pattern['cell'], re.IGNORECASE).group(2))
+    row = int(re.search(pattern, parms['cell'], re.IGNORECASE).group(1))
+    column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
     result['grid'] = parms['grid']
     #insert value
     result['grid'][54 + (row-7)*15 + (column - 1)] = int(parms['value'])
