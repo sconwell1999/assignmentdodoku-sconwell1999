@@ -1,5 +1,6 @@
 import hashlib
 import random
+import dodoku.getHash as getHash
 
 def _create(parms):
     result = {'grid':'', 'integrity':'', 'status':'ok'}
@@ -26,7 +27,7 @@ def _create(parms):
                         -9,-8,0,-5,0,-1,-2,0,-2,0,0,-7,0,-1,0,0,-3,0,-4,-3,0,-8,0,-6,-5,0,0,0,-7,-3,0,-5,
                         -9,0,0,0,0,0,-4,0,-2,0,0,0,0,0,0,0,-6,0,0,0,0]
         else:
-            result['status'] = 'error:Invalid level input'
+            result = {'status':'error:Invalid level input'}
             return result
     else:
         result['grid'] = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,
