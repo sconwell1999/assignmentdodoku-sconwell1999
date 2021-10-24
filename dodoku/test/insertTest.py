@@ -1,5 +1,6 @@
 from unittest import TestCase
-import dodoku.insert as insert 
+import dodoku.insert as insert
+import dodoku.getHash as getHash
 
 class InsertTest(TestCase):
     def test_Insert_010_InsertValue(self):
