@@ -49,4 +49,15 @@ class InsertTest(TestCase):
                         -9,0,0,0,-6,0,0,-5,0,0,-3,-1], 'integrity':'2ab5f3e8'}
         actualResult = insert._insert(parms)
         self.assertListEqual(expectedResult['grid'], actualResult['grid'])
-        
+    
+    def test_Insert_040_InvalidIntegrity(self):
+        expectedResult = {'status':'error: Integrity mismatch'}
+        parms = {'op':'insert','value':'4','cell':'r14c14',
+                 'grid':[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,
+                        0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0
+                        ,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6
+                        ,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,
+                        -9,0,0,0,-6,0,0,-5,0,0,-3,-1], 'integrity':'aaaaaaa'}
+        actualResult = insert._insert(parms)
+        self.assertDictEqual(expectedResult, actualResult)
+    
