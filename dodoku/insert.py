@@ -4,6 +4,7 @@ import random
 import ast
 
 def _insert(parms):
+    result = {}
     result['grid'] = ast.literal_eval(parms['grid'])
     if not parms['integrity'] in getHash(parms['grid']):
         result = {'status': 'error: Integrity mismatch'}
