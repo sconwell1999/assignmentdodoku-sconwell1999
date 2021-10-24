@@ -14,9 +14,9 @@ def _insert(parms):
     #insert value
     if row < 7 and column < 10:
         result['grid'][(row-1)*9 + (column - 1)] = int(parms['value'])
-    elif row < 10 and column < 16:
+    elif row > 6 and row < 10 and column < 16:
         result['grid'][54 + (row-7)*15 + (column - 1)] = int(parms['value'])
-    elif row < 16 and column > 6 and column < 16:
+    elif row > 9 and row < 16 and column > 6 and column < 16:
         result['grid'][99 + (row-10)*9 + (column - 7)] = int(parms['value'])
     else:
         result = {'status':'error: Invalid cell'}   
