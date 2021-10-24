@@ -6,7 +6,7 @@ import ast
 def _insert(parms):
     result = {}
     result['grid'] = ast.literal_eval(parms['grid'])
-    if not parms['integrity'] in getHash(parms['grid']):
+    if not parms['integrity'] in getHash(result['grid']):
         result = {'status': 'error: Integrity mismatch'}
         return result
     pattern = r"R(.*?)C(\d+)"
