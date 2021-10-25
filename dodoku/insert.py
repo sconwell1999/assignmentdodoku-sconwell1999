@@ -10,7 +10,8 @@ def _insert(parms):
         result = {'status': 'error: Integrity mismatch'}
         return result
     try:
-        int(parms['value'])
+        if int(parms['value']) > 9 or int(parms['value']) < 1:
+            raise ValueError
     except ValueError:
         result = {'status': 'error: Invalid value'}
         return result
