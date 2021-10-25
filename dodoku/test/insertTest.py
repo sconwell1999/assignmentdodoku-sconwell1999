@@ -136,7 +136,7 @@ class InsertTest(TestCase):
         actualResult = insert._insert(parms)
         self.assertEqual(expectedResult['status'], actualResult['status'])
         
-    def test_Insert_090_InvalidGrid(self):
+    def test_Insert_110_InvalidGrid(self):
         parms = {'value':'3','cell':'r1c2','grid':'[a,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,\
                 -5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,\
                 0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,\
@@ -146,4 +146,19 @@ class InsertTest(TestCase):
         expectedResult = {'status': 'error: Invalid grid'}
         actualResult = insert._insert(parms)
         self.assertEqual(expectedResult['status'], actualResult['status'])
+        
+    def test_Insert_120_RemoveValue(self):
+        parms = {'cell':'r3c1','grid':'[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,\
+                -3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,\
+                0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,\
+                -7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,\
+                0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]','integrity':'d5f78945'}
+        expectedResult = {'grid': [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,
+                        -3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,
+                        0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,
+                        0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,
+                        0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,
+                        0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1],'integrity': '2ab5f3e8','status':'ok'}
+        actualResult = insert._insert(parms)
+        self.assertListEqual(expectedResult['grid'], actualResult['grid'])
     

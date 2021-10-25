@@ -10,6 +10,9 @@ def _insert(parms):
         return result
     try:
         result['grid'] = ast.literal_eval(parms['grid'])
+        for x in result['grid']:
+            if not x in range(-9,10):
+                raise ValueError
     except ValueError:
         result = {'status':'error: Invalid grid'}
         return result
