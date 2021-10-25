@@ -99,7 +99,7 @@ def rowValuesCheck(grid, row):
             values.append(grid[54+(row-7)*15+x])
     elif row in range(10,16):
         for x in range(0,9):
-            values.append(grid[99+(row-1)*9+x])
+            values.append(grid[99+(row-10)*9+x])
             
     if len(values) == 15:
         val1 = values[0:9]
