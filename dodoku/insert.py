@@ -5,7 +5,7 @@ import ast
 
 def _insert(parms):
     result = {}
-    if not parms.has_Key('cell'):
+    if not 'cell' in parms:
         result = {'status':'error: Missing cell value'}
         return result
     result['grid'] = ast.literal_eval(parms['grid'])
