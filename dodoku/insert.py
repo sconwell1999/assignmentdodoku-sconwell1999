@@ -8,13 +8,14 @@ def _insert(parms):
     if not 'cell' in parms:
         result = {'status':'error: Missing cell value'}
         return result
-    result['grid'] = ast.literal_eval(parms['grid'])
+    try:
+        result['grid'] = ast.literal_eval(parms['grid'])
+    except ValueError:
+        result = {'status':'error: Invalid grid'}
+        return result
     if not parms['integrity'] in getHash(result['grid']):
         result = {'status': 'error: Integrity mismatch'}
         return result
-    for x in result['grid']:
-        if x not in range(-9,10):
-            result = {'status':'error: Invalid grid'}
     try:
         if int(parms['value']) > 9 or int(parms['value']) < 1:
             raise ValueError
