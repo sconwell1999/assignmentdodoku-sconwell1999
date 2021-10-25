@@ -22,12 +22,16 @@ def _insert(parms):
     else:
         result = {'status':'error: Invalid cell'}   
         return result
+    if not(columnValuesCheck(result['grid'], column) and rowValuesCheck(result['grid'], row) and subGridValuesCheck(result['grid'], row, column)):
+        result['status'] = 'warning'
+    else:
+        result['status'] = 'ok'   
+    #check for valid numbers
     r = random.randint(0,56)
     result['integrity'] = getHash(result['grid'])[r:r+8]
-    result['status'] = 'ok'
     return result
 
-def getColumnValues(grid, row, column):
+def columnValuesCheck(grid, column):
     values = []
     if column in range(1,7):
         for x in range(0,48,9):
@@ -42,9 +46,12 @@ def getColumnValues(grid, row, column):
     elif column in range(10,16):
         for x in range(63,148,9):
             values.append(grid[x+column-10])
-    return values
+            
+    if len(values) == 15:        
+        return len(values[0:9]) == len(set(values[0:9])) and len(values[6:16]) == len(set(values[6:16]))
+    return len(values) == len(set(values))
 
-def getRowValues(grid, row, column):
+def rowValuesCheck(grid, row):
     values = []
     if row in range(1,7):
         for x in range(0,9):
@@ -55,11 +62,26 @@ def getRowValues(grid, row, column):
     elif row in range(10,16):
         for x in range(0,9):
             values.append(grid[99+(row-1)*9+x])
-    return values
+            
+    if len(values) == 15:
+        return len(values[0:9]) == len(set(values[0:9])) and len(values[6:16]) == len(set(values[6:16]))
+    return len(values) == len(set(values))
 
-def getSubGridValues(grid, row, column):
+def subGridValuesCheck(grid, row, column):
     values = []
+    startRow = row - row % 3
+    startColumn = column - column % 3
     if row in range(1,7):
-        for x in range(0,3):
-            return
+        for i in range(3):
+            for j in range(3):
+                values.append(grid[(startRow-1+i)*9+startColumn+j])
+    if row in range(7,10):
+        for i in range(3):
+            for j in range(3):
+                values.append(grid[(startRow-1+i)*15+startColumn+j])
+    if row in range(10,16):
+        for i in range(3):
+            for j in range(3):
+                values.append(grid[(startRow-1+i)*9+startColumn+j])
+    return len(values) == len(set(values))
     
