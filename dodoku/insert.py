@@ -5,6 +5,9 @@ import ast
 
 def _insert(parms):
     result = {}
+    if not parms.hasKey('cell'):
+        result = {'status':'error: Missing cell value'}
+        return result
     result['grid'] = ast.literal_eval(parms['grid'])
     if not parms['integrity'] in getHash(result['grid']):
         result = {'status': 'error: Integrity mismatch'}
