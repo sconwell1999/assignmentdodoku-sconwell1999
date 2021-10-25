@@ -19,6 +19,7 @@ class InsertTest(TestCase):
                         -9,0,0,0,-6,0,0,-5,0,0,-3,-1]', 'integrity':'2ab5f3e8'}
         actualResult = insert._insert(parms)
         self.assertListEqual(expectedResult['grid'], actualResult['grid'])
+        self.assertEqual(expectedResult['status'], actualResult['status'])
         
     def test_Insert_020_InsertValueFirstSection(self):
         expectedResult = {'grid': [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,
@@ -160,5 +161,5 @@ class InsertTest(TestCase):
                         0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,
                         0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1],'integrity': '2ab5f3e8','status':'ok'}
         actualResult = insert._insert(parms)
-        self.assertListEqual(expectedResult['grid'], actualResult['grid'])
+        self.assertDictEqual(expectedResult['grid'], actualResult['grid'])
     

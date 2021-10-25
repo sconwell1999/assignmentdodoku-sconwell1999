@@ -80,7 +80,12 @@ def columnValuesCheck(grid, column):
             values.append(grid[x+column-10])
             
     if len(values) == 15:        
-        return len(values[0:9]) == len(set(values[0:9])) and len(values[6:16]) == len(set(values[6:16]))
+        val1 = values[0:9]
+        val2 = values[6:16]
+        #remove 0's
+        val1 = filter(lambda val: val !=  0, val1)
+        val2 = filter(lambda val: val !=  0, val2)
+        return len(val1) == len(set(val1)) and len(val2) == len(set(val2))
     return len(values) == len(set(values))
 
 def rowValuesCheck(grid, row):
@@ -96,7 +101,14 @@ def rowValuesCheck(grid, row):
             values.append(grid[99+(row-1)*9+x])
             
     if len(values) == 15:
-        return len(values[0:9]) == len(set(values[0:9])) and len(values[6:16]) == len(set(values[6:16]))
+        val1 = values[0:9]
+        val2 = values[6:16]
+        #remove 0's
+        val1 = filter(lambda val: val !=  0, val1)
+        val2 = filter(lambda val: val !=  0, val2)
+        return len(val1) == len(set(val1)) and len(val2) == len(set(val2))
+    
+    values = filter(lambda val: val !=  0, values) 
     return len(values) == len(set(values))
 
 def subGridValuesCheck(grid, row, column):
@@ -115,5 +127,7 @@ def subGridValuesCheck(grid, row, column):
         for i in range(3):
             for j in range(3):
                 values.append(grid[(startRow-1+i)*9+startColumn+j])
+                
+    values = filter(lambda val: val !=  0, values)
     return len(values) == len(set(values))
     
