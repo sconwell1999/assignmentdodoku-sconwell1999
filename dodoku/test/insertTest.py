@@ -163,6 +163,5 @@ class InsertTest(TestCase):
                         0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,
                         0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1],'integrity': '2ab5f3e8','status':'ok'}
         actualResult = insert._insert(parms)
-        print(actualResult)
         self.assertListEqual(expectedResult['grid'], actualResult['grid'])
     
