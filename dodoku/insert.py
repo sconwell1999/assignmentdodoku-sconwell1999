@@ -9,6 +9,11 @@ def _insert(parms):
     if not parms['integrity'] in getHash(result['grid']):
         result = {'status': 'error: Integrity mismatch'}
         return result
+    try:
+        int(parms['value'])
+    except ValueError:
+        result = {'status': 'error: Invalid value'}
+        return result
     pattern = r"R(.*?)C(\d+)"
     row = int(re.search(pattern, parms['cell'], re.IGNORECASE).group(1))
     column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
