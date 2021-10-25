@@ -102,4 +102,16 @@ class InsertTest(TestCase):
                         -9,0,0,0,-6,0,0,-5,0,0,-3,-1]', 'integrity':'2ab5f3e8'}
         actualResult = insert._insert(parms)
         self.assertEqual(expectedResult['status'], actualResult['status'])
+        
+    def test_Insert_080_ImmutableCell(self):
+        parms = {'value':'1','cell':'r1c2','grid':'[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,\
+                -5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,\
+                0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,\
+                -9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,\
+                -8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,\
+                0,0,-3,-1]','integrity':'2ab5f3e8'}
+        expectedResult = {'status': 'error: Immutable cell'}
+        actualResult = insert._insert(parms)
+        self.assertEqual(expectedResult['status'], actualResult['status'])
+        
     
