@@ -12,6 +12,9 @@ def _insert(parms):
     if not parms['integrity'] in getHash(result['grid']):
         result = {'status': 'error: Integrity mismatch'}
         return result
+    for x in result['grid']:
+        if x not in range(-9,10):
+            result = {'status':'error: Invalid grid'}
     try:
         if int(parms['value']) > 9 or int(parms['value']) < 1:
             raise ValueError
