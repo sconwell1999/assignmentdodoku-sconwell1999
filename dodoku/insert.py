@@ -8,7 +8,7 @@ def _insert(parms):
     if not 'cell' in parms:
         result = {'status':'error: Missing cell value'}
         return result
-    if parms['integrity'] == '' or not 'integrity' in parms:
+    if not 'integrity' in parms or parms['integrity'] == '':
         result = {'status':'error: Integrity required'}
         return result
     try:
