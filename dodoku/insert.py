@@ -38,6 +38,7 @@ def _insert(parms):
         column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
     except Exception:
         result = {'status':'error: Invalid cell value'}
+        return result
     #insert value
     if row < 7 and column < 10:
         if result['grid'][(row-1)*9 + (column - 1)] >= 0:
