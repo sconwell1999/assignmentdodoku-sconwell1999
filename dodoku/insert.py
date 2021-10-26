@@ -8,6 +8,9 @@ def _insert(parms):
     if not 'cell' in parms:
         result = {'status':'error: Missing cell value'}
         return result
+    if not 'integrity' in parms:
+        result = {'status':'error: Integrity required'}
+        return result
     try:
         result['grid'] = ast.literal_eval(parms['grid'])
         for x in result['grid']:
