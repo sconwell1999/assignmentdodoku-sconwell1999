@@ -193,6 +193,6 @@ class InsertTest(TestCase):
                 -9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,\
                 -8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,\
                 0,0,-3,-1]','integrity':'2ab5f3e8'}
-        expectedResult = {'status': 'error: Missing cell value'}
+        expectedResult = {'status': 'error: Invalid cell value'}
         actualResult = insert._insert(parms)
         self.assertEqual(expectedResult['status'], actualResult['status'])

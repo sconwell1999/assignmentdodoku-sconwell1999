@@ -33,8 +33,11 @@ def _insert(parms):
     else:
         value = 0 
     pattern = r"R(.*?)C(\d+)"
-    row = int(re.search(pattern, parms['cell'], re.IGNORECASE).group(1))
-    column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
+    try:
+        row = int(re.search(pattern, parms['cell'], re.IGNORECASE).group(1))
+        column= int(re.search(pattern, parms['cell'], re.IGNORECASE).group(2))
+    except Exception:
+        result = {'status':'error: Invalid cell value'}
     #insert value
     if row < 7 and column < 10:
         if result['grid'][(row-1)*9 + (column - 1)] >= 0:
